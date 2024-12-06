@@ -1,0 +1,284 @@
+heck=full ./test-1-node -s
+==452== Memcheck, a memory error detector
+==452== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==452== Using Valgrind-3.18.1 and LibVEX; rerun with -h for copyright info
+==452== Command: ./test-1-node -s
+==452==
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+test-1-node is a Catch v2.13.10 host application.
+Run with -? for options
+
+-------------------------------------------------------------------------------
+Node
+-------------------------------------------------------------------------------
+test/test-1-node.cpp:4
+...............................................................................
+
+test/test-1-node.cpp:6: PASSED:
+  CHECK( "root" == n.getName() )
+with expansion:
+  "root" == "root"
+
+test/test-1-node.cpp:7: PASSED:
+  CHECK( 'd' == n.getType() )
+with expansion:
+  'd' == 'd'
+
+test/test-1-node.cpp:8: PASSED:
+  CHECK( nullptr == n.getParent() )
+with expansion:
+  nullptr == nullptr
+
+test/test-1-node.cpp:9: PASSED:
+  CHECK( 0 == n.getChildren().size() )
+with expansion:
+  0 == 0
+
+test/test-1-node.cpp:13: PASSED:
+  CHECK( child == n.getChild("child") )
+with expansion:
+  0x0000000004e59c80 == 0x0000000004e59c80
+
+test/test-1-node.cpp:14: PASSED:
+  CHECK( (&n == child->getParent()) )
+with expansion:
+  true
+
+test/test-1-node.cpp:17: PASSED:
+  CHECK( 'f' == n.getChild("second")->getType() )
+with expansion:
+  'f' == 'f'
+
+test/test-1-node.cpp:21: PASSED:
+  CHECK( parent == n.getParent() )
+with expansion:
+  0x0000000004e5a8e0 == 0x0000000004e5a8e0
+
+test/test-1-node.cpp:23: PASSED:
+  CHECK( 2 == n.getChildren().size() )
+with expansion:
+  2 == 2
+
+destructor called
+destructor called
+test/test-1-node.cpp:28: PASSED:
+  CHECK( 1 == n.getChildren().size() )
+with expansion:
+  1 == 1
+
+destructor called
+destructor called
+destructor called
+==452== Invalid read of size 8
+==452==    at 0x1F3612: __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >::__normal_iterator(Node** const&) (stl_iterator.h:1028)
+==452==    by 0x1F3177: std::vector<Node*, std::allocator<Node*> >::end() (stl_vector.h:830)
+==452==    by 0x1F2A01: Node::~Node() (node.cpp:15)
+==452==    by 0x1F08D4: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:32)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==    by 0x130149: Catch::Session::run() (catch.hpp:13518)
+==452==  Address 0x4e5a910 is 48 bytes inside a block of size 72 free'd
+==452==    at 0x484BB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==452==    by 0x1F08C8: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:31)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==    by 0x130149: Catch::Session::run() (catch.hpp:13518)
+==452==    by 0x171744: int Catch::Session::run<char>(int, char const* const*) (catch.hpp:13236)
+==452==    by 0x14744B: main (catch.hpp:17543)
+==452==  Block was alloc'd at
+==452==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==452==    by 0x1F034A: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:19)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==    by 0x130149: Catch::Session::run() (catch.hpp:13518)
+==452==    by 0x171744: int Catch::Session::run<char>(int, char const* const*) (catch.hpp:13236)
+==452==    by 0x14744B: main (catch.hpp:17543)
+==452==
+==452== Invalid read of size 8
+==452==    at 0x1F3612: __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >::__normal_iterator(Node** const&) (stl_iterator.h:1028)
+==452==    by 0x1F3177: std::vector<Node*, std::allocator<Node*> >::end() (stl_vector.h:830)
+==452==    by 0x1F2A34: Node::~Node() (node.cpp:15)
+==452==    by 0x1F08D4: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:32)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==    by 0x130149: Catch::Session::run() (catch.hpp:13518)
+==452==  Address 0x4e5a910 is 48 bytes inside a block of size 72 free'd
+==452==    at 0x484BB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==452==    by 0x1F08C8: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:31)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==    by 0x130149: Catch::Session::run() (catch.hpp:13518)
+==452==    by 0x171744: int Catch::Session::run<char>(int, char const* const*) (catch.hpp:13236)
+==452==    by 0x14744B: main (catch.hpp:17543)
+==452==  Block was alloc'd at
+==452==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==452==    by 0x1F034A: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:19)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==    by 0x130149: Catch::Session::run() (catch.hpp:13518)
+==452==    by 0x171744: int Catch::Session::run<char>(int, char const* const*) (catch.hpp:13236)
+==452==    by 0x14744B: main (catch.hpp:17543)
+==452==
+==452== Invalid read of size 8
+==452==    at 0x1F3612: __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >::__normal_iterator(Node** const&) (stl_iterator.h:1028)
+==452==    by 0x1F3127: std::vector<Node*, std::allocator<Node*> >::begin() (stl_vector.h:812)
+==452==    by 0x1F2A4B: Node::~Node() (node.cpp:15)
+==452==    by 0x1F08D4: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:32)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==    by 0x130149: Catch::Session::run() (catch.hpp:13518)
+==452==  Address 0x4e5a908 is 40 bytes inside a block of size 72 free'd
+==452==    at 0x484BB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==452==    by 0x1F08C8: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:31)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==    by 0x130149: Catch::Session::run() (catch.hpp:13518)
+==452==    by 0x171744: int Catch::Session::run<char>(int, char const* const*) (catch.hpp:13236)
+==452==    by 0x14744B: main (catch.hpp:17543)
+==452==  Block was alloc'd at
+==452==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==452==    by 0x1F034A: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:19)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==    by 0x130149: Catch::Session::run() (catch.hpp:13518)
+==452==    by 0x171744: int Catch::Session::run<char>(int, char const* const*) (catch.hpp:13236)
+==452==    by 0x14744B: main (catch.hpp:17543)
+==452==
+==452== Invalid read of size 8
+==452==    at 0x1F3612: __gnu_cxx::__normal_iterator<Node**, std::vector<Node*, std::allocator<Node*> > >::__normal_iterator(Node** const&) (stl_iterator.h:1028)
+==452==    by 0x1F3127: std::vector<Node*, std::allocator<Node*> >::begin() (stl_vector.h:812)
+==452==    by 0x1F322F: std::vector<Node*, std::allocator<Node*> >::erase(__gnu_cxx::__normal_iterator<Node* const*, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node* const*, std::vector<Node*, std::allocator<Node*> > >) (stl_vector.h:1459)
+==452==    by 0x1F2A8A: Node::~Node() (node.cpp:15)
+==452==    by 0x1F08D4: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:32)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==  Address 0x4e5a908 is 40 bytes inside a block of size 72 free'd
+==452==    at 0x484BB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==452==    by 0x1F08C8: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:31)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==    by 0x130149: Catch::Session::run() (catch.hpp:13518)
+==452==    by 0x171744: int Catch::Session::run<char>(int, char const* const*) (catch.hpp:13236)
+==452==    by 0x14744B: main (catch.hpp:17543)
+==452==  Block was alloc'd at
+==452==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==452==    by 0x1F034A: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:19)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==    by 0x130149: Catch::Session::run() (catch.hpp:13518)
+==452==    by 0x171744: int Catch::Session::run<char>(int, char const* const*) (catch.hpp:13236)
+==452==    by 0x14744B: main (catch.hpp:17543)
+==452==
+==452== Invalid read of size 8
+==452==    at 0x1F40E2: __gnu_cxx::__normal_iterator<Node* const*, std::vector<Node*, std::allocator<Node*> > >::__normal_iterator(Node* const* const&) (stl_iterator.h:1028)
+==452==    by 0x1F37B7: std::vector<Node*, std::allocator<Node*> >::cbegin() const (stl_vector.h:885)
+==452==    by 0x1F323F: std::vector<Node*, std::allocator<Node*> >::erase(__gnu_cxx::__normal_iterator<Node* const*, std::vector<Node*, std::allocator<Node*> > >, __gnu_cxx::__normal_iterator<Node* const*, std::vector<Node*, std::allocator<Node*> > >) (stl_vector.h:1460)
+==452==    by 0x1F2A8A: Node::~Node() (node.cpp:15)
+==452==    by 0x1F08D4: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:32)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==  Address 0x4e5a908 is 40 bytes inside a block of size 72 free'd
+==452==    at 0x484BB6F: operator delete(void*, unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==452==    by 0x1F08C8: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:31)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==    by 0x130149: Catch::Session::run() (catch.hpp:13518)
+==452==    by 0x171744: int Catch::Session::run<char>(int, char const* const*) (catch.hpp:13236)
+==452==    by 0x14744B: main (catch.hpp:17543)
+==452==  Block was alloc'd at
+==452==    at 0x4849013: operator new(unsigned long) (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==452==    by 0x1F034A: C_A_T_C_H_T_E_S_T_0() (test-1-node.cpp:19)
+==452==    by 0x134199: Catch::TestInvokerAsFunction::invoke() const (catch.hpp:14330)
+==452==    by 0x1333B8: Catch::TestCase::invoke() const (catch.hpp:14169)
+==452==    by 0x12D637: Catch::RunContext::invokeActiveTestCase() (catch.hpp:13025)
+==452==    by 0x12D35C: Catch::RunContext::runCurrentTest(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char> >&) (catch.hpp:12998)
+==452==    by 0x12BDDD: Catch::RunContext::runTest(Catch::TestCase const&) (catch.hpp:12759)
+==452==    by 0x12EF95: Catch::(anonymous namespace)::TestGroup::execute() (catch.hpp:13352)
+==452==    by 0x130476: Catch::Session::runInternal() (catch.hpp:13562)
+==452==    by 0x130149: Catch::Session::run() (catch.hpp:13518)
+==452==    by 0x171744: int Catch::Session::run<char>(int, char const* const*) (catch.hpp:13236)
+==452==    by 0x14744B: main (catch.hpp:17543)
+==452==
+===============================================================================
+All tests passed (10 assertions in 1 test case)
+
+==452== 
+==452== HEAP SUMMARY:
+==452==     in use at exit: 0 bytes in 0 blocks
+==452==   total heap usage: 2,589 allocs, 2,589 frees, 454,361 bytes allocated
+==452==
+==452== All heap blocks were freed -- no leaks are possible
+==452==
+==452== For lists of detected and suppressed errors, rerun with: -s
+==452== ERROR SUMMARY: 5 errors from 5 contexts (suppressed: 0 from 0)
